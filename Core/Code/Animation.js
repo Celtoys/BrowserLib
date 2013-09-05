@@ -24,8 +24,12 @@ Anim.Animation = (function()
 		this.EndCallback = end_callback;
 
 		// Cache the update function to prevent recreating the closure
+		var self = this;
 		this.AnimFunc = anim_func;
-		this.AnimUpdate = function() { Update(this); }
+		this.AnimUpdate = function() { Update(self); }
+
+		// Call for the start value
+		this.AnimUpdate();
 	}
 
 
@@ -36,9 +40,9 @@ Anim.Animation = (function()
 
 		// Linear step the value and check for completion
 		self.Value += self.ValueInc;
-		if (Math.abs(self.Value - self.End) < 0.01)
+		if (Math.abs(self.Value - self.EndValue) < 0.01)
 		{
-			self.Value = self.End;
+			self.Value = self.EndValue;
 			self.Complete = true;
 
 			if (self.EndCallback)
@@ -58,5 +62,5 @@ Anim.Animation = (function()
 
 Anim.Animate = function(anim_func, start_value, end_value, time, end_callback)
 {
-	return new Anim.Animate(anim_func, start_value, end_value, time, end_callback);
+	return new Anim.Animation(anim_func, start_value, end_value, time, end_callback);
 }
