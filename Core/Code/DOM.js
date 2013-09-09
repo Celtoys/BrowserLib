@@ -1,9 +1,7 @@
 
-// Setup namespaces
-var DOM = { };
-DOM.Node = { };
-DOM.Event = { };
-DOM.Applet = { };
+namespace("DOM.Node");
+namespace("DOM.Event");
+namespace("DOM.Applet");
 
 
 

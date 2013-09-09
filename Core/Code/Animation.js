@@ -4,8 +4,7 @@
 //
 
 
-// Setup namespaces
-var Anim = { };
+namespace("Anim");
 
 
 Anim.Animation = (function()
