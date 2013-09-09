@@ -1,2 +1,31 @@
 {
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"metadata.pib"
+			],
+			"path": "Core"
+		},
+		{
+			"file_exclude_patterns":
+			[
+				"metadata.pib"
+			],
+			"path": "WindowManager"
+		}
+	],
+
+	"settings":
+	{
+		"rulers":
+		[
+			120
+		],
+		"tab_size": 4,
+		"translate_tabs_to_spaces": false,
+		"word_wrap": false,
+		"wrap_width": 120
+	}
 }
