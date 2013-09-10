@@ -196,6 +196,20 @@ DOM.Node.Contains = function(node, container_node)
 
 
 //
+// Create the HTML nodes specified in the text passed in
+// Assumes there is only one root node in the text
+//
+DOM.Node.CreateHTML = function(html)
+{
+	var div = document.createElement("div");
+	div.innerHTML = html;
+
+	// First child will be a text node, followed by the created HTML
+	return div.firstChild.nextSibling;
+}
+
+
+//
 // Make a copy of a HTML element, making it visible and clearing its ID to ensure it's not a duplicate
 //
 DOM.Node.Clone = function(name)

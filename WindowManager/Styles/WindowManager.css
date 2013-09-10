@@ -1,0 +1,46 @@
+.Window
+{
+	/* Allows movement of the window to exceed browser region without triggering scroll bars */
+	position:fixed;
+
+	/* Clip all contents to the window border */
+	overflow: hidden;
+
+	background: #404040;
+
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+
+	-webkit-box-shadow: 3px 3px 3px #111, 1px 1px 1px #606060 inset;
+	box-shadow: 3px 3px 3px #111, 1px 1px 1px #606060 inset;
+}
+.WindowTitleBar
+{
+	height: 17px;
+	cursor: move;
+
+	border-bottom: 1px solid #303030;
+	border-radius: 5px;
+}
+.WindowTitleBarText
+{
+	color: #BBB;
+	font: 9px Verdana;
+
+	padding: 3px;
+	cursor: move;
+}
+.WindowTitleBarClose
+{
+	color: #999999;
+	font: 9px Verdana;
+
+	padding: 3px;
+	cursor: default;
+}
+.WindowBody
+{
+	padding:10px;
+	border-top: 1px solid #606060;
+	height:100%;
+}
