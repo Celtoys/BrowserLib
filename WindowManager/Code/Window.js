@@ -192,7 +192,6 @@ WM.Window = (function()
 	{
 		// Use the offset at the beginning of movement to drag the window around
 		var mouse_pos = DOM.Event.GetMousePosition(evt);
-		console.log(mouse_pos);
 		var offset = this.Offset;
 		var pos = [ mouse_pos[0] - offset[0], mouse_pos[1] - offset[1] ];
 		this.Position = pos;
