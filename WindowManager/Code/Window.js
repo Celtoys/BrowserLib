@@ -181,8 +181,8 @@ WM.Window = (function()
 		this.Offset = [ mouse_pos[0] - this.Position[0], mouse_pos[1] - this.Position[1] ];
 
 		// Dynamically add handlers for movement and release
-		DOM.Event.AddHandler(document.body, "mousemove", this.MoveDelegate);
-		DOM.Event.AddHandler(document.body, "mouseup", this.EndMoveDelegate);
+		DOM.Event.AddHandler(document, "mousemove", this.MoveDelegate);
+		DOM.Event.AddHandler(document, "mouseup", this.EndMoveDelegate);
 
 		DOM.Event.StopDefaultAction(evt);
 	}
@@ -192,6 +192,7 @@ WM.Window = (function()
 	{
 		// Use the offset at the beginning of movement to drag the window around
 		var mouse_pos = DOM.Event.GetMousePosition(evt);
+		console.log(mouse_pos);
 		var offset = this.Offset;
 		var pos = [ mouse_pos[0] - offset[0], mouse_pos[1] - offset[1] ];
 		this.Position = pos;
@@ -207,8 +208,8 @@ WM.Window = (function()
 	Window.prototype.EndMove = function(evt)
 	{
 		// Remove handlers added during mouse down
-		DOM.Event.RemoveHandler(document.body, "mousemove", this.MoveDelegate);
-		DOM.Event.RemoveHandler(document.body, "mouseup", this.EndMoveDelegate);
+		DOM.Event.RemoveHandler(document, "mousemove", this.MoveDelegate);
+		DOM.Event.RemoveHandler(document, "mouseup", this.EndMoveDelegate);
 
 		DOM.Event.StopDefaultAction(evt);
 	}
