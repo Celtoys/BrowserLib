@@ -1,4 +1,7 @@
 
+// TODO: requires function for checking existence of dependencies
+
+
 function namespace(name)
 {
 	// Ensure all nested namespaces are created only once
