@@ -1,4 +1,10 @@
 
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* Window Styles                                                                                                      */
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+
+
 .Window
 {
 	/* Allows movement of the window to exceed browser region without triggering scroll bars */
@@ -69,3 +75,26 @@
 	padding:10px;
 	border-top: 1px solid #606060;
 }
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* Container Styles                                                                                                   */
+/* ------------------------------------------------------------------------------------------------------------------ */
+
+
+
+.Container
+{
+	/* Position relative to the parent window */
+	position: absolute;
+
+	background:#2C2C2C;
+
+	border: 1px black solid;
+
+	/* Two inset box shadows to simulate depressing */
+	-webkit-box-shadow: -1px -1px 1px #222 inset, 1px 1px 1px #222 inset;
+	box-shadow: -1px -1px 1px #222 inset, 1px 1px 1px #222 inset;
+}
+

@@ -131,6 +131,14 @@ WM.Window = (function()
 	}
 
 
+	Window.prototype.AddControlNew = function(control)
+	{
+		control.ParentNode = this.BodyNode;
+		this.BodyNode.appendChild(control.Node);
+		return control;
+	}
+
+
 	Window.prototype.Scale = function(t)
 	{
 		// Calculate window bounds centre/extents
