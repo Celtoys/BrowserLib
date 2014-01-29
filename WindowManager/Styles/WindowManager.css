@@ -38,9 +38,16 @@
 	padding: 3px;
 	cursor: default;
 }
+
 .WindowBody
 {
+	/* Turns this node into a "positioned node" so that its children can be placed relative to it */
+	position: absolute;
+
+	/* Fill the parent window node */
+	width: 100%;
+	height: 100%;
+
 	padding:10px;
 	border-top: 1px solid #606060;
-	height:100%;
 }
