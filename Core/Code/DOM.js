@@ -204,8 +204,11 @@ DOM.Node.CreateHTML = function(html)
 	var div = document.createElement("div");
 	div.innerHTML = html;
 
-	// First child will be a text node, followed by the created HTML
-	return div.firstChild.nextSibling;
+	// First child may be a text node, followed by the created HTML
+	var child = div.firstChild;
+	if (child != null && child.nodeType == 3)
+		child = child.nextSibling;
+	return child;
 }
 
 
