@@ -98,7 +98,7 @@ Convert.Uint8Array_to_b64string = function(aBytes)
 //
 // Unicode and arbitrary value safe conversion between strings and Uint8Arrays
 //
-function Uint8Array_to_string(aBytes)
+Convert.Uint8Array_to_string = function(aBytes)
 {
 	var sView = "";
 
@@ -124,7 +124,7 @@ function Uint8Array_to_string(aBytes)
 
 	return sView;
 }
-function string_to_Uint8Array(sDOMStr)
+Convert.string_to_Uint8Array = function(sDOMStr)
 {
 	var aBytes, nChr, nStrLen = sDOMStr.length, nArrLen = 0;
 
@@ -192,3 +192,27 @@ function string_to_Uint8Array(sDOMStr)
 
 	return aBytes;
 }
+
+
+//
+// Converts all characters in a string that have equivalent entities to their ampersand/entity names.
+// Based on https://gist.github.com/jonathantneal/6093551
+//
+Convert.string_to_html_entities = (function()
+{
+	'use strict';
+
+	var data = '34quot38amp39apos60lt62gt160nbsp161iexcl162cent163pound164curren165yen166brvbar167sect168uml169copy170ordf171laquo172not173shy174reg175macr176deg177plusmn178sup2179sup3180acute181micro182para183middot184cedil185sup1186ordm187raquo188frac14189frac12190frac34191iquest192Agrave193Aacute194Acirc195Atilde196Auml197Aring198AElig199Ccedil200Egrave201Eacute202Ecirc203Euml204Igrave205Iacute206Icirc207Iuml208ETH209Ntilde210Ograve211Oacute212Ocirc213Otilde214Ouml215times216Oslash217Ugrave218Uacute219Ucirc220Uuml221Yacute222THORN223szlig224agrave225aacute226acirc227atilde228auml229aring230aelig231ccedil232egrave233eacute234ecirc235euml236igrave237iacute238icirc239iuml240eth241ntilde242ograve243oacute244ocirc245otilde246ouml247divide248oslash249ugrave250uacute251ucirc252uuml253yacute254thorn255yuml402fnof913Alpha914Beta915Gamma916Delta917Epsilon918Zeta919Eta920Theta921Iota922Kappa923Lambda924Mu925Nu926Xi927Omicron928Pi929Rho931Sigma932Tau933Upsilon934Phi935Chi936Psi937Omega945alpha946beta947gamma948delta949epsilon950zeta951eta952theta953iota954kappa955lambda956mu957nu958xi959omicron960pi961rho962sigmaf963sigma964tau965upsilon966phi967chi968psi969omega977thetasym978upsih982piv8226bull8230hellip8242prime8243Prime8254oline8260frasl8472weierp8465image8476real8482trade8501alefsym8592larr8593uarr8594rarr8595darr8596harr8629crarr8656lArr8657uArr8658rArr8659dArr8660hArr8704forall8706part8707exist8709empty8711nabla8712isin8713notin8715ni8719prod8721sum8722minus8727lowast8730radic8733prop8734infin8736ang8743and8744or8745cap8746cup8747int8756there48764sim8773cong8776asymp8800ne8801equiv8804le8805ge8834sub8835sup8836nsub8838sube8839supe8853oplus8855otimes8869perp8901sdot8968lceil8969rceil8970lfloor8971rfloor9001lang9002rang9674loz9824spades9827clubs9829hearts9830diams338OElig339oelig352Scaron353scaron376Yuml710circ732tilde8194ensp8195emsp8201thinsp8204zwnj8205zwj8206lrm8207rlm8211ndash8212mdash8216lsquo8217rsquo8218sbquo8220ldquo8221rdquo8222bdquo8224dagger8225Dagger8240permil8249lsaquo8250rsaquo8364euro';
+	var charCodes = data.split(/[A-z]+/);
+	var entities = data.split(/\d+/).slice(1);
+
+	return function encodeHTMLEntities(text)
+	{
+		return text.replace(/[\u00A0-\u2666<>"'&]/g, function (match)
+		{
+			var charCode = String(match.charCodeAt(0));
+			var index = charCodes.indexOf(charCode);
+			return '&' + (entities[index] ? entities[index] : '#' + charCode) + ';';
+		});
+	};
+})();
