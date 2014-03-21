@@ -68,6 +68,7 @@ WM.GridRow = (function()
 		this.AnimHandle = null;
 		this.Rows = new WM.GridRows();
 		this.CellData = cell_data;
+		this.CellNodes = { };
 
 		// Create the main row node
 		this.Node = DOM.Node.CreateHTML(template_html);
@@ -86,7 +87,7 @@ WM.GridRow = (function()
 
 				// Create a node for the cell and add any custom classes
 				var node = DOM.Node.AppendHTML(this.Node, "<div class='GridRowCell'></div>");
-				this[attr + "Node"] = node;
+				this.CellNodes[attr] = node;
 				if (cell_classes)
 					DOM.Node.AddClass(node, cell_classes);
 
