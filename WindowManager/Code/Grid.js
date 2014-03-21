@@ -113,9 +113,9 @@ WM.GridRow = (function()
 	}
 
 
-	GridRow.prototype.AddRow = function(name, control)
+	GridRow.prototype.AddRow = function(cell_data)
 	{
-		return this.Rows.Add(this, { "Name": name, "Control": control });
+		return this.Rows.Add(this, cell_data);
 	}
 
 
